@@ -1,10 +1,186 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>ProBall Arena</title>
-<style>body{margin:0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#fff;color:#1b1d29}main{max-width:640px;margin:0 auto;padding:48px 16px}a{color:#2f5bd8}@media (prefers-color-scheme:dark){body{background:#11131c;color:#eceef6}a{color:#7fa2ff}}</style></head>
-<body><main>
-<h1>ProBall Arena</h1>
-<p>A fast online football game for iPhone, by Kaan Küreli.</p>
-<p><a href="https://kkureli.github.io/proball-arena-legal/">Privacy Policy / Gizlilik Politikası</a></p>
-<p>Contact / İletişim: <a href="mailto:kkureli@gmail.com">kkureli@gmail.com</a></p>
-</main></body></html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ProBall Arena</title>
+<meta name="description" content="ProBall Arena: hızlı, rekabetçi online futbol oyunu. Fast, competitive online football for iPhone.">
+<link rel="icon" href="img/icon.png">
+<link rel="apple-touch-icon" href="img/icon.png">
+<meta property="og:title" content="ProBall Arena">
+<meta property="og:description" content="Hızlı, rekabetçi online futbol. Fast, competitive online football.">
+<meta property="og:image" content="https://kkureli.github.io/img/lobby.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Teko:wght@500;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --night: #070b1f;
+  --deep: #0e1640;
+  --ink: #f2f4ff;
+  --muted: #aab3d6;
+  --gold: #ffc93c;
+  --red: #ff3b4f;
+  --blue: #2f8bff;
+  --line: rgba(255, 255, 255, 0.1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--night); color: var(--ink); font: 16px/1.6 Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; overflow-x: hidden; }
+a { color: inherit; }
+img { max-width: 100%; display: block; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
+h1, h2, h3, .caps { font-family: Teko, Impact, sans-serif; text-transform: uppercase; letter-spacing: 0.02em; line-height: 1; margin: 0; }
+
+/* Top bar */
+header.bar { position: absolute; inset: 0 0 auto 0; z-index: 3; }
+header.bar .wrap { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; padding-bottom: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-family: Teko, sans-serif; font-size: 26px; text-transform: uppercase; }
+.brand img { width: 40px; height: 40px; border-radius: 10px; }
+.lang a { text-decoration: none; color: var(--muted); font-weight: 600; font-size: 14px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); }
+.lang a[aria-current] { color: var(--ink); border-color: var(--gold); }
+
+/* Hero */
+.hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 96px 0 64px; isolation: isolate; }
+.hero::before { content: ""; position: absolute; inset: 0; background: url("img/stadium.jpg") center / cover no-repeat; z-index: -2; transform: scale(1.04); }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background:
+  radial-gradient(ellipse at 50% 30%, rgba(7, 11, 31, 0.15), rgba(7, 11, 31, 0.75) 70%),
+  linear-gradient(180deg, rgba(7, 11, 31, 0.2) 0%, rgba(7, 11, 31, 0.55) 60%, var(--night) 100%); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; width: 100%; }
+.logo { width: min(520px, 100%); filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.6)); }
+.tagline { font-size: clamp(30px, 5vw, 48px); margin: 18px 0 8px; color: var(--ink); text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6); }
+.tagline span { color: var(--gold); }
+.lede { color: #dfe4ff; max-width: 520px; margin: 0 0 26px; font-size: 17px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); }
+.cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 14px; background: linear-gradient(180deg, #ff5566, #d81f35); color: #fff; text-decoration: none; font-family: Teko, sans-serif; font-size: 28px; text-transform: uppercase; box-shadow: 0 8px 0 #7a0f1d, 0 14px 30px rgba(216, 31, 53, 0.45); }
+.soon { display: block; margin-top: 18px; color: var(--muted); font-size: 14px; }
+.hero-art { position: relative; justify-self: center; }
+.hero-art img { width: min(460px, 100%); filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.6)); animation: float 5s ease-in-out infinite; }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@media (prefers-reduced-motion: reduce) { .hero-art img { animation: none; } }
+
+/* Sections */
+section { padding: 72px 0; }
+.kicker { color: var(--gold); font-family: Teko, sans-serif; font-size: 22px; text-transform: uppercase; letter-spacing: 0.06em; }
+h2 { font-size: clamp(38px, 6vw, 58px); margin: 4px 0 18px; }
+.sub { color: var(--muted); max-width: 640px; margin: 0 0 36px; }
+
+.shot { border-radius: 22px; overflow: hidden; border: 1px solid var(--line); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(255, 201, 60, 0.12); }
+
+.features { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 40px; }
+.card { background: linear-gradient(180deg, #17205a, #0f1645); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.card .icon { font-size: 30px; }
+.card h3 { font-size: 30px; margin: 10px 0 6px; }
+.card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+.legend { background: radial-gradient(ellipse at 50% 0%, #2a1460 0%, var(--night) 70%); }
+.sets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.set { position: relative; border-radius: 20px; padding: 18px 14px 16px; text-align: center; background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)); border: 2px solid rgba(255, 201, 60, 0.55); overflow: hidden; }
+.set::before { content: ""; position: absolute; inset: 20% 10% auto; height: 60%; background: radial-gradient(circle, var(--glow) 0%, transparent 70%); opacity: 0.55; z-index: 0; }
+.set img { position: relative; z-index: 1; aspect-ratio: 4 / 3; object-fit: contain; width: 100%; }
+.set h3 { position: relative; z-index: 1; font-size: 28px; margin-top: 8px; }
+.tag { position: relative; z-index: 1; display: inline-block; margin-top: 4px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; color: #3a1c00; background: var(--gold); padding: 2px 10px; border-radius: 999px; text-transform: uppercase; }
+
+footer { border-top: 1px solid var(--line); padding: 32px 0 48px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 28px; justify-content: space-between; align-items: center; }
+footer nav { display: flex; flex-wrap: wrap; gap: 18px; }
+footer a { color: var(--ink); text-decoration: none; }
+footer a:hover { color: var(--gold); }
+
+[data-lang="en"] .tr, [data-lang="tr"] .en { display: none; }
+
+@media (max-width: 900px) {
+  .hero .wrap { grid-template-columns: 1fr; text-align: center; }
+  .logo, .lede { margin-left: auto; margin-right: auto; }
+  .hero-art { order: -1; }
+  .hero-art img { width: min(300px, 80vw); }
+  .features, .sets { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px) {
+  .features { grid-template-columns: 1fr; }
+  .sets { gap: 10px; }
+  .set h3 { font-size: 22px; }
+}
+</style>
+</head>
+<body data-lang="tr">
+<header class="bar">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/icon.png" alt="">ProBall Arena</a>
+    <div class="lang"><a href="#" data-set="tr" aria-current="true">TR</a> <a href="#" data-set="en">EN</a></div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <img class="logo" src="img/logo.png" alt="ProBall Arena">
+      <p class="tagline caps"><span class="tr">Sahaya çık, <span>golü at!</span></span><span class="en">Step in, <span>score big!</span></span></p>
+      <p class="lede"><span class="tr">Hızlı, rekabetçi online futbol. Arkadaşlarınla 1v1 ya da 3v3 maç yap, ligde yüksel, oyuncunu ve diskini efsanevi setlerle kişiselleştir.</span><span class="en">Fast, competitive online football. Play 1v1 or 3v3 with friends, climb the ranked ladder, and make your player and disc your own with legendary sets.</span></p>
+      <a class="cta" href="#game"><span class="tr">Oyunu keşfet</span><span class="en">Discover the game</span> ›</a>
+      <span class="soon"><span class="tr">Yakında App Store'da</span><span class="en">Coming soon to the App Store</span></span>
+    </div>
+    <div class="hero-art"><img src="img/hero.png" alt=""></div>
+  </div>
+</div>
+
+<section id="game">
+  <div class="wrap">
+    <div class="kicker"><span class="tr">Oyun</span><span class="en">The game</span></div>
+    <h2><span class="tr">Stadyum seni bekliyor</span><span class="en">The stadium awaits</span></h2>
+    <p class="sub"><span class="tr">Tek dokunuşla maça gir. Her maç birkaç dakika sürer, her gol fark yaratır.</span><span class="en">Jump into a match with one tap. Every match takes a few minutes, and every goal counts.</span></p>
+    <div class="shot"><img src="img/lobby.jpg" alt="ProBall Arena lobby" loading="lazy"></div>
+    <div class="features">
+      <div class="card"><div class="icon">⚡</div><h3><span class="tr">Hızlı maçlar</span><span class="en">Quick matches</span></h3><p><span class="tr">Joystick ve şut tuşu: öğrenmesi kolay, ustalaşması zor.</span><span class="en">A joystick and a kick button: easy to learn, hard to master.</span></p></div>
+      <div class="card"><div class="icon">🏆</div><h3><span class="tr">Sıralamalı lig</span><span class="en">Ranked ladder</span></h3><p><span class="tr">Ligde basamak basamak yüksel, hafta sonu kupasında yarış.</span><span class="en">Climb the ranked tiers and compete in the weekend cup.</span></p></div>
+      <div class="card"><div class="icon">👥</div><h3><span class="tr">Arkadaş ve klan</span><span class="en">Friends &amp; clans</span></h3><p><span class="tr">Özel oda kur, arkadaşına meydan oku, klanınla birlikte oyna.</span><span class="en">Open a private room, challenge friends, and play with your clan.</span></p></div>
+      <div class="card"><div class="icon">🎨</div><h3><span class="tr">Kişiselleştir</span><span class="en">Customize</span></h3><p><span class="tr">Yüzler, saçlar, formalar, top ve disk görünümleri.</span><span class="en">Faces, hair, kits, ball and disc looks.</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="legend">
+  <div class="wrap">
+    <div class="kicker"><span class="tr">Mağaza</span><span class="en">Shop</span></div>
+    <h2><span class="tr">Efsanevi setler</span><span class="en">Legendary sets</span></h2>
+    <p class="sub"><span class="tr">Ejderha, Anka ve Elmas setleriyle sahada fark edil. Kulüp üyeleri her gün jeton kazanır, maç aralarında reklam görmez.</span><span class="en">Stand out with the Dragon, Phoenix, and Diamond sets. Club members earn Coins every day and see no ads between matches.</span></p>
+    <div class="sets">
+      <div class="set" style="--glow:#ff4a1c"><img src="img/theme_set_dragon.png" alt="" loading="lazy"><h3><span class="tr">Ejderha</span><span class="en">Dragon</span></h3><span class="tag"><span class="tr">Efsane</span><span class="en">Legendary</span></span></div>
+      <div class="set" style="--glow:#ffb020"><img src="img/theme_set_phoenix.png" alt="" loading="lazy"><h3><span class="tr">Anka</span><span class="en">Phoenix</span></h3><span class="tag"><span class="tr">Efsane</span><span class="en">Legendary</span></span></div>
+      <div class="set" style="--glow:#5cc8ff"><img src="img/theme_set_diamond.png" alt="" loading="lazy"><h3><span class="tr">Elmas</span><span class="en">Diamond</span></h3><span class="tag"><span class="tr">Efsane</span><span class="en">Legendary</span></span></div>
+      <div class="set" style="--glow:#ffc93c"><img src="img/club.png" alt="" loading="lazy"><h3><span class="tr">ProBall Kulübü</span><span class="en">ProBall Club</span></h3><span class="tag">VIP</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Kaan Küreli · ProBall Arena</div>
+    <nav>
+      <a href="https://kkureli.github.io/proball-arena-legal/"><span class="tr">Gizlilik Politikası</span><span class="en">Privacy Policy</span></a>
+      <a href="mailto:kkureli@gmail.com"><span class="tr">Destek</span><span class="en">Support</span>: kkureli@gmail.com</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var body = document.body;
+  var saved = null;
+  try { saved = localStorage.getItem("lang"); } catch (e) {}
+  var initial = saved || ((navigator.language || "").toLowerCase().indexOf("tr") === 0 ? "tr" : "en");
+  function set(lang) {
+    body.setAttribute("data-lang", lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll(".lang a").forEach(function (a) {
+      if (a.getAttribute("data-set") === lang) a.setAttribute("aria-current", "true"); else a.removeAttribute("aria-current");
+    });
+    try { localStorage.setItem("lang", lang); } catch (e) {}
+  }
+  document.querySelectorAll(".lang a").forEach(function (a) {
+    a.addEventListener("click", function (event) { event.preventDefault(); set(a.getAttribute("data-set")); });
+  });
+  set(initial);
+})();
+</script>
+</body>
+</html>
