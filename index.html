@@ -41,7 +41,7 @@ header.bar .wrap { display: flex; align-items: center; justify-content: space-be
 .lang a[aria-current] { color: var(--ink); border-color: var(--gold); }
 
 /* Hero */
-.hero { position: relative; min-height: 92vh; display: flex; align-items: center; padding: 96px 0 64px; isolation: isolate; }
+.hero { position: relative; overflow: hidden; min-height: 92vh; display: flex; align-items: center; padding: 96px 0 64px; isolation: isolate; }
 .hero::before { content: ""; position: absolute; inset: 0; background: url("img/stadium.jpg") center / cover no-repeat; z-index: -2; transform: scale(1.04); }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background:
   radial-gradient(ellipse at 50% 30%, rgba(7, 11, 31, 0.15), rgba(7, 11, 31, 0.75) 70%),
@@ -49,7 +49,7 @@ header.bar .wrap { display: flex; align-items: center; justify-content: space-be
 .hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; width: 100%; }
 .logo { width: min(520px, 100%); filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.6)); }
 .tagline { font-size: clamp(30px, 5vw, 48px); margin: 18px 0 8px; color: var(--ink); text-shadow: 0 4px 18px rgba(0, 0, 0, 0.6); }
-.tagline span { color: var(--gold); }
+.tagline .hl { color: var(--gold); }
 .lede { color: #dfe4ff; max-width: 520px; margin: 0 0 26px; font-size: 17px; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7); }
 .cta { display: inline-flex; align-items: center; gap: 10px; padding: 14px 26px; border-radius: 14px; background: linear-gradient(180deg, #ff5566, #d81f35); color: #fff; text-decoration: none; font-family: Teko, sans-serif; font-size: 28px; text-transform: uppercase; box-shadow: 0 8px 0 #7a0f1d, 0 14px 30px rgba(216, 31, 53, 0.45); }
 .soon { display: block; margin-top: 18px; color: var(--muted); font-size: 14px; }
@@ -115,7 +115,7 @@ footer a:hover { color: var(--gold); }
   <div class="wrap">
     <div>
       <img class="logo" src="img/logo.png" alt="ProBall Arena">
-      <p class="tagline caps"><span class="tr">Sahaya çık, <span>golü at!</span></span><span class="en">Step in, <span>score big!</span></span></p>
+      <p class="tagline caps"><span class="tr">Sahaya çık, <span class="hl">golü at!</span></span><span class="en">Step in, <span class="hl">score big!</span></span></p>
       <p class="lede"><span class="tr">Hızlı, rekabetçi online futbol. Arkadaşlarınla 1v1 ya da 3v3 maç yap, ligde yüksel, oyuncunu ve diskini efsanevi setlerle kişiselleştir.</span><span class="en">Fast, competitive online football. Play 1v1 or 3v3 with friends, climb the ranked ladder, and make your player and disc your own with legendary sets.</span></p>
       <a class="cta" href="#game"><span class="tr">Oyunu keşfet</span><span class="en">Discover the game</span> ›</a>
       <span class="soon"><span class="tr">Yakında App Store'da</span><span class="en">Coming soon to the App Store</span></span>
